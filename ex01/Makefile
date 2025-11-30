@@ -1,10 +1,10 @@
-SRC = main.cpp 
+SRC = main.cpp Span.cpp
 
 OBJ = ${SRC:.cpp=.o}
 
-HEADER = easyfind.hpp
+HEADER = Span.hpp
 
-NAME = easyfind
+NAME = Span
 
 CC = c++
 

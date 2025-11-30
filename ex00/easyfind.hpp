@@ -1,20 +1,18 @@
 #ifndef  easyfind_HPP
 #define  easyfind_HPP
 
-
 #include <iostream>
+#include <algorithm>
 
 
-class Notfind : public std::exception
+template <typename T> void easyfind(T &type, int integer)
 {
-    public:
-        const char *what() const throw();
-    
-};
+    typename T::iterator a = std::find(type.begin(), type.end(), integer);
 
-template <typename T> void easyfind(T type, int integer)
-{
-    
+    if ( a == type.end())
+        throw std::runtime_error("we not found in container");
+    else
+        std::cout << "we found " << integer << " in container " << std::endl ; 
 }
 
 #endif
