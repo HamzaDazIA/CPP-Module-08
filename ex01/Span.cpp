@@ -53,16 +53,22 @@ int Span::shortestSpan()
 {
     if (this->cont.size() < 2)
         throw std::logic_error("Not enough elements to find a span");
-    int rs = INT_MAX;
+    long long rs = INT_MAX;
     std::vector<int> tmp = this->cont;
     std::sort(tmp.begin(), tmp.end());
 
     for (size_t i = 0; i < this->cont.size() - 1; i++)
     {
-        if (tmp[i + 1] - tmp[i] < rs)
-            rs = tmp[i + 1] - tmp[i];
+        long long tmp1 = static_cast<long long>(tmp[i + 1]);
+        long long tmp2 = static_cast<long long>(tmp[i]);
+        long long diff = tmp1 - tmp2;
+
+        if (diff  < rs)
+            rs = diff;
     }
-    return (rs);
+    if (rs > INT_MAX)
+        throw std::runtime_error("The ressult is to long for a int type");
+    return (static_cast<int>(rs));
 }
 
 int Span::longestSpan()
@@ -72,7 +78,13 @@ int Span::longestSpan()
 
     std::vector<int> tmp = this->cont;
     std::sort(tmp.begin(), tmp.end());
-    return (tmp.back() - tmp.front());
+    long long tm1 = static_cast<long long >(tmp.back());
+    long long tm2 = static_cast<long long >(tmp.front());
+    long long rs = tm1 - tm2;
+    
+    if (rs > INT_MAX)
+        throw std::runtime_error("The ressult is to long for a int type");
+    return (static_cast<int>(rs));
 }
 
 void Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
