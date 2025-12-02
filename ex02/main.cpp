@@ -4,9 +4,6 @@
 
 int main()
 {
-    // ==========================================
-    // PART 1: Your MutantStack
-    // ==========================================
     std::cout << "--- MutantStack Output ---" << std::endl;
     MutantStack<int> mstack;
     
@@ -37,13 +34,10 @@ int main()
     }
     std::stack<int> s(mstack);
 
-    // ==========================================
-    // PART 2: std::list (Verification)
-    // ==========================================
     std::cout << "\n--- std::list Output ---" << std::endl;
     std::list<int> mlist;
     
-    mlist.push_back(5); // push -> push_back
+    mlist.push_back(5);
     mlist.push_back(17);
     
     std::cout << mlist.back() << std::endl;
